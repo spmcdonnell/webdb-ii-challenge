@@ -11,4 +11,12 @@ server.get('/', (req, res) => {
     });
 });
 
+server.post('/', (req, res) => {
+    db('cars')
+        .insert(req.body)
+        .then(cars => {
+            res.status(201).json(cars);
+        });
+});
+
 module.exports = server;
